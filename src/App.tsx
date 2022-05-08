@@ -1,9 +1,9 @@
 export const App = () => {
   return (
-    <div className="App">
-      Hello, typescript
+    <div>
+      
     </div>
   );
-}
+};
 
 export default App;
