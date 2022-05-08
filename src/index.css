@@ -1,0 +1,76 @@
+@import url("https://fashgram-ui.netlify.app/lighttheme.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+:root{
+    --white: #fff;
+    --black: #000;
+    --pure-theme-color: rgb(247, 247, 247);
+
+    --color-primary: rgb(145, 128, 196);
+    --color-primary-values: 145, 128, 196;
+    
+    --color-white: rgb(247, 247, 247);
+    --color-white-values: 247, 247, 247;
+
+    --color-dark : rgb(11, 13, 23);
+    --color-dark-values: 11, 13, 23;
+
+    --color-secondary: rgb(156,163,175);
+    --color-secondary-values: 156,163,175;
+    
+    --color-complementary: rgb(11, 13, 23);
+    --color-complementary-values: 11, 13, 23;
+
+    --color-current: rgb(247, 247, 247);
+    --box-shadow: 0 12px 8px -4px rgba(0, 0, 0, 0.5);
+
+    --card-background: rgba(197, 185, 185, 0.1);
+    --card-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    --nav-color: #e9e5f3;
+    --toast-color: #323332;
+}
+
+[data-theme="dark"]{
+    --pure-theme-color: #000;
+
+    --color-primary: rgb(145, 128, 196);
+    --color-primary-values: 145, 128, 196;
+
+    --color-dark: rgb(11, 13, 23);
+    --color-secondary: rgb(156, 163, 175);
+
+    --color-complementary: rgb(247, 247, 247);
+    --color-complementary-values: 247, 247, 247;
+
+    --color-current: rgb(11, 13, 23);
+    --box-shadow: 0 14px 8px -2px rgba(255, 255, 255, 0.3);
+
+    --card-background: rgba(255, 255, 255, 0.2);
+
+    --nav-color: #484062;
+    --toast-color: #323332;
+}
+
+body::-webkit-scrollbar,
+.side-container::-webkit-scrollbar,
+.playlist-item-container::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+.side-container::-webkit-scrollbar-thumb,
+.playlist-item-container::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-primary-values), 0.5);   ;
+}
+
+body,
+html {
+    scroll-behavior: smooth;
+    letter-spacing: 0.25px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-current);
+}
