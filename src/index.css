@@ -2,26 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fashgram-ui.netlify.app/lighttheme.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
-:root{
+:root {
+    --color-primary-light: #D2CBE7;
+
     --white: #fff;
     --black: #000;
     --pure-theme-color: rgb(247, 247, 247);
 
     --color-primary: rgb(145, 128, 196);
     --color-primary-values: 145, 128, 196;
-    
+
     --color-white: rgb(247, 247, 247);
     --color-white-values: 247, 247, 247;
 
-    --color-dark : rgb(11, 13, 23);
+    --color-dark: rgb(11, 13, 23);
     --color-dark-values: 11, 13, 23;
 
-    --color-secondary: rgb(156,163,175);
-    --color-secondary-values: 156,163,175;
-    
+    --color-secondary: rgb(156, 163, 175);
+    --color-secondary-values: 156, 163, 175;
+
     --color-complementary: rgb(11, 13, 23);
     --color-complementary-values: 11, 13, 23;
 
@@ -29,13 +32,14 @@
     --box-shadow: 0 12px 8px -4px rgba(0, 0, 0, 0.5);
 
     --card-background: rgba(197, 185, 185, 0.1);
-    --card-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --card-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
     --nav-color: #e9e5f3;
     --toast-color: #323332;
 }
 
-[data-theme="dark"]{
+[data-theme="dark"] {
+    --color-primary-light: #D2CBE7;
     --pure-theme-color: #000;
 
     --color-primary: rgb(145, 128, 196);
@@ -57,16 +61,15 @@
 }
 
 body::-webkit-scrollbar,
-.side-container::-webkit-scrollbar,
-.playlist-item-container::-webkit-scrollbar {
+.comment-section::-webkit-scrollbar{
     width: 10px;
     height: 10px;
 }
 
 body::-webkit-scrollbar-thumb,
-.side-container::-webkit-scrollbar-thumb,
-.playlist-item-container::-webkit-scrollbar-thumb {
-    background-color: rgba(var(--color-primary-values), 0.5);   ;
+.comment-section::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-primary-values), 0.5)
+    ;
 }
 
 body,
@@ -76,4 +79,27 @@ html {
     margin: 0;
     padding: 0;
     background-color: var(--color-current);
+}
+
+nav.navigation {
+    background-color: #D2CBE7;
+}
+
+.btn {
+    border-radius: 2px;
+    border: 2px solid transparent;
+    padding: 3px 8px;
+}
+
+.btn:hover {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    box-shadow: none;
+}
+
+@layer components {
+    .container {
+        min-height: 100vh;
+        margin: 0 auto;
+    }
 }

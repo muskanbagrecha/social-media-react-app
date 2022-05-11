@@ -1,0 +1,58 @@
+.feed-navigation{
+    justify-content: space-between;
+    position: relative;
+    position: sticky;
+    bottom: 8px;
+    z-index: 2;
+}
+
+.feed-navigation ul{
+    justify-content: space-around;
+}
+
+.feed-navigation ul li{
+    display: inline-block;
+    position: relative;
+}
+
+.feed-navigation .badge{
+    position: absolute;
+    top: -5px;
+    border: none;
+    background-color: var(--color-primary);
+}
+
+.feed-navigation .nav-label{
+    display: none;
+}
+
+.create-icon{
+    position: absolute;
+    left: 50%;
+    top: -0.8rem;
+    z-index: 1;
+    height: 3.25rem;
+    width: 3.25rem;
+    transform: translate(-50%, -50%);
+    margin: 5px;
+    border-width: 4px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .feed-navigation ul li{
+        display: block;
+    }
+
+    .feed-navigation .nav-label{
+        display: inline;
+    }
+
+    .feed-navigation .badge{
+        position: static;
+    }
+
+    .create-icon{
+        display: none;
+    }
+}
