@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo/logo.png";
 import { Sun, Moon } from "../../assets";
 import { useTheme } from "../../context";
@@ -6,6 +6,7 @@ import "./Navigation.css";
 
 export const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <nav className="navigation px-2 border-b-2 sticky top-0 z-10 bg-primary-200 pr-8 md:pr-10 lg:pr-12">
@@ -22,10 +23,16 @@ export const Navigation: React.FC = () => {
           placeholder="search"
           className="rounded px-2 py-1 w-52 lg:w-60"
         />
-        <div className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex">
+        <div
+          className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex"
+          onClick={() => navigate("/profile")}
+        >
           MB
         </div>
-        <div className="cursor-pointer" onClick={() => toggleTheme(theme)}>
+        <div
+          className="cursor-pointer"
+          onClick={(): void => toggleTheme(theme)}
+        >
           {theme === "light" ? <Sun /> : <Moon />}
         </div>
       </div>

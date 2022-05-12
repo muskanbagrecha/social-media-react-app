@@ -10,7 +10,7 @@ export const CreatePost = () => {
           placeholder="What's on your mind?"
           className="rounded  resize-y w-full p-2 bg-primary"
         />
-        <footer className="flex items-center justify-center gap-12 child-hover:cursor-pointer ">
+        <footer className="flex items-center justify-center gap-12 child-hover:cursor-pointer child-hover:text-primary-700">
           <span>
             <Gallery />
           </span>
