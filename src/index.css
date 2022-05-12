@@ -95,6 +95,7 @@ nav.navigation {
     background-color: transparent;
     border: 2px solid var(--color-primary);
     box-shadow: none;
+    color: red;
 }
 
 @layer components {
