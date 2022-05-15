@@ -12,7 +12,7 @@ export const Post = () => {
   });
 
   return (
-    <article className="post rounded-md bg-primary-200 m-2 py-2">
+    <article className="post rounded-sm bg-primary-200 m-2 py-2">
       <header>
         <div>
           <div className="avatar avatar-xs avatar-text rounded">MB</div>
@@ -31,13 +31,13 @@ export const Post = () => {
         <div className="flex my-2 justify-evenly child:min-w-[8rem] child:py-2 child:px-5 child:gap-2 child:text-base">
           <button
             type="button"
-            className="font-medium text-gray-900 rounded-lg hover:bg-primary-100 hover:text-primary-500 flex items-center justify-center"
+            className="font-medium text-gray-900 rounded  hover:bg-primary-100 hover:text-primary-500 flex items-center justify-center"
           >
             <Like />6 Likes
           </button>
           <button
             type="button"
-            className="font-medium text-gray-900 rounded-lg hover:bg-primary-100 hover:text-primary-500 flex items-center justify-center"
+            className="font-medium text-gray-900 rounded  hover:bg-primary-100 hover:text-primary-500 flex items-center justify-center"
             onClick={() => setShowComments(!showComments)}
           >
             <Comment />5 Comments

@@ -21,7 +21,7 @@ export const Navigation: React.FC = () => {
         <input
           type="search"
           placeholder="search"
-          className="rounded px-2 py-1 w-52 lg:w-60"
+          className="rounded-sm px-2 py-1 w-52 lg:w-60"
         />
         <div
           className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex"

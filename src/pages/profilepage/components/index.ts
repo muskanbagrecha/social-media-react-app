@@ -1,0 +1,1 @@
+import { MainProfile } from "./main-profile/MainProfile";
