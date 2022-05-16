@@ -6,6 +6,10 @@
     z-index: 2;
 }
 
+.feed-navigation, .who-to-follow{
+    min-width: 14rem;
+}
+
 .feed-navigation ul{
     justify-content: space-around;
 }

@@ -13,7 +13,7 @@ export const FeedNavigation: React.FC = () => {
   return (
     <nav className="dark:bg-gray-800 relative rounded-md mx-2 md:order-last order-last md:order-first lg:order-first md:w-1/5 lg:w-1/5 feed-navigation">
       <div className="create-icon avatar avatar-xs avatar-text">+</div>
-      <div className="overflow-y-auto p-3 md:py-4 lg-py-4 bg-gray-50 dark:bg-gray-800 rounded  sticky top-20">
+      <div className="overflow-y-auto p-3 md:py-4 lg-py-4 bg-gray-50 dark:bg-gray-800 rounded sticky top-20">
         <ul className="my-2 md:space-y-2 lg:space-y-2 flex md:block p-0">
           <li>
             <Link
@@ -62,7 +62,7 @@ export const FeedNavigation: React.FC = () => {
               </span>
             </Link>
           </li>
-          <li onClick={() => navigate("/profile")}>
+          <li onClick={() => navigate("/profile/muskanbagrecha")}>
             <Link
               to="/"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"

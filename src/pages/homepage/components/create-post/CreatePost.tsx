@@ -12,7 +12,7 @@ export const CreatePost = () => {
           placeholder="What's on your mind?"
           className="rounded-sm  resize-y w-full p-2 bg-primary"
         />
-        <footer className="flex items-center justify-between my-2 gap-12 child-hover:cursor-pointer child-hover:text-primary-700">
+        <section className="flex items-center justify-between my-2 gap-12 child-hover:cursor-pointer child-hover:text-primary-700">
           <span>
             <Gallery />
           </span>
@@ -25,7 +25,7 @@ export const CreatePost = () => {
           <span>
             <Bookmark />
           </span>
-        </footer>
+        </section>
       </div>
     </div>
   );

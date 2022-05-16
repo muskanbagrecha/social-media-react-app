@@ -35,30 +35,3 @@ export const AppRouter = () => {
     </Routes>
   );
 };
-
-{
-  /* <Route element={<PrivateRoute />}>
-<Route path='/my-profile' element={<ProfilePage />} />
-<Route path='/bookmark' element={<BookmarkPage />} />
-<Route path='/likes' element={<LikedPostPage />} />
-</Route> */
-}
-
-// const PrivateRoute = () => {
-// 	const { authUser } = useAuth();
-// 	const location = useLocation();
-// 	return authUser ? <Outlet /> : <Navigate to='/auth' state={{ from: location }} replace />;
-// };
-
-{
-  /* <Route element={<RestrictedRoute />}>
-<Route path='/auth' element={<Auth />} />
-</Route> */
-}
-
-// const RestrictedRoute = (second) => {
-// 	const { authUser } = useAuth();
-
-// 	const location = useLocation();
-// 	return authUser ? <Navigate to={location.state?.from?.pathname ?? '/'} state={{ from: location }} replace /> : <Outlet />;
-// };

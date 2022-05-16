@@ -3,6 +3,8 @@ import logo from "../../assets/images/logo/logo.png";
 import { Sun, Moon } from "../../assets";
 import { useTheme } from "../../context";
 import "./Navigation.css";
+import { logoutHandler } from "../../firebase/firebaseAuth";
+import { useSelector } from "react-redux";
 
 export const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -25,7 +27,8 @@ export const Navigation: React.FC = () => {
         />
         <div
           className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex"
-          onClick={() => navigate("/profile")}
+          onClick={() => navigate("/profile/muskanbagrecha")}
+          title="profile"
         >
           MB
         </div>
@@ -34,6 +37,7 @@ export const Navigation: React.FC = () => {
           onClick={(): void => toggleTheme(theme)}
         >
           {theme === "light" ? <Sun /> : <Moon />}
+          {/* <button onClick={logoutHandler}>Logout</button> */}
         </div>
       </div>
     </nav>

@@ -1,8 +1,9 @@
 import { Outlet, Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IRootState } from "../../store/store";
 export const AuthenticatedRoutes = () => {
-  // 	const { authUser } = useAuth();
+  const { authUser } = useSelector((store: IRootState) => store.auth);
   const location = useLocation();
-  const authUser = true;
   return authUser ? (
     <Outlet />
   ) : (
