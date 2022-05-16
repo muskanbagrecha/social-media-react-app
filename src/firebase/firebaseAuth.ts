@@ -7,9 +7,8 @@ import {
     updateProfile,
     signInWithEmailAndPassword,
     signInWithPopup,
-    User,
 } from 'firebase/auth';
-import {setAuthUser, setIsLoading, setError} from "../store/auth-action/authSlice";
+import {setAuthUser} from "../store/auth-action/authSlice";
 import { addUserToTheDB, getUser } from "./firebase-firestore";
 
 export const auth = getAuth(app);

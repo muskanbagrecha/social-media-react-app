@@ -18,7 +18,7 @@ export const Loginpage: FC = () => {
   };
 
   const dispatch = useDispatch();
-  const { isLoading, error } = useSelector((store: IRootState) => store.auth);
+  const { error } = useSelector((store: IRootState) => store.auth);
   const formSubmitHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     dispatch(setError(""));
@@ -33,7 +33,7 @@ export const Loginpage: FC = () => {
       <div className="container px-6 py-12 h-full">
         <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
           <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-            <img src={phoneImage} className="w-full" alt="Phone image" />
+            <img src={phoneImage} className="w-full" alt="phone" />
           </div>
           <div className="md:w-8/12 lg:w-5/12 lg:ml-20 mt-4">
             <form onSubmit={formSubmitHandler}>

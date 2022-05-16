@@ -1,5 +1,5 @@
 import { app } from "./firebase-config";
-import { getFirestore, collection, setDoc, doc, getDoc, getDocs, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, setDoc, doc, getDoc } from 'firebase/firestore';
 // import { User } from "firebase/auth";
 import { User } from "../store/auth-action/authSlice";
 const db = getFirestore(app);

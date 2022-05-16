@@ -3,8 +3,6 @@ import logo from "../../assets/images/logo/logo.png";
 import { Sun, Moon } from "../../assets";
 import { useTheme } from "../../context";
 import "./Navigation.css";
-import { logoutHandler } from "../../firebase/firebaseAuth";
-import { useSelector } from "react-redux";
 
 export const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
