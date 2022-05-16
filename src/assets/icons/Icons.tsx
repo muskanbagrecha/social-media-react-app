@@ -88,13 +88,8 @@ export function Notification(props: SVGProps<SVGSVGElement>) {
 
 export function User(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
-      <path
-        fill="currentColor"
-        d="M12 17c3.662 0 6.865 1.575 8.607 3.925l-1.842.871C17.347 20.116 14.847 19 12 19c-2.847 0-5.347 1.116-6.765 2.796l-1.841-.872C5.136 18.574 8.338 17 12 17zm0-15a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z"
-      ></path>
-    </svg>
-  );
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill="currentColor" d="M4 22a8 8 0 1 1 16 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6z"></path></svg>
+  )
 }
 
 export function Gallery(props: SVGProps<SVGSVGElement>) {
@@ -200,6 +195,17 @@ export function Pencil(props: SVGProps<SVGSVGElement>) {
       <path
         fill="currentColor"
         d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 5.63l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41z"
+      ></path>
+    </svg>
+  );
+}
+
+export function Logout(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="M9 11h8.175l-2.55-2.55L16 7l5 5l-5 5l-1.375-1.45l2.55-2.55H9Zm3-8v2H5v14h7v2H5q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3Z"
       ></path>
     </svg>
   );
