@@ -8,3 +8,5 @@ const allUsersSlice = createSlice({
     initialState,
     reducers: {}
 })
+
+export default allUsersSlice.reducer;
