@@ -7,7 +7,7 @@ import {
   Loginpage,
   Signuppage,
   Explorepage,
-  Otherprofilepage,
+  // Otherprofilepage,
 } from "../pages";
 import { AuthenticatedRoutes, UnauthenticatedRoutes } from "../components";
 export const AppRouter = () => {
@@ -17,7 +17,7 @@ export const AppRouter = () => {
 
       {/* Private routes for authenticated users */}
       <Route element={<AuthenticatedRoutes />}>
-        <Route path="/profile/:username" element={<Profilepage />} />
+        <Route path="/profile/me" element={<Profilepage />} />
         <Route path="/bookmark" element={<Bookmarkpage />} />
         <Route path="/likes" element={<Likespage />} />
       </Route>
@@ -29,7 +29,7 @@ export const AppRouter = () => {
       </Route>
 
       {/* Other public routes */}
-      <Route path="/profile/:username" element={<Otherprofilepage />} />
+      <Route path="/profile/:uid" element={<Profilepage />} />
       <Route path="/explore" element={<Explorepage />} />
       <Route path="*" element={<h1>404</h1>} />
     </Routes>

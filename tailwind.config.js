@@ -15,13 +15,14 @@ module.exports = {
           800: "#342857",
           900: "#1B152D",
         },
-      }
-    }
+      },
+    },
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     function ({ addVariant }) {
-      addVariant('child', '& > *');
-      addVariant('child-hover', '& > *:hover');
-  }
+      addVariant("child", "& > *");
+      addVariant("child-hover", "& > *:hover");
+    },
   ],
 };
