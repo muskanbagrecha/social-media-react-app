@@ -24,9 +24,8 @@ export const MainProfile = () => {
     if (otherUid) {
       getUserData();
     } else {
-      console.log(tempUser);
       setUser(tempUser);
-    }
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { authUser: userData, followersList, followingList, postsList } = user;

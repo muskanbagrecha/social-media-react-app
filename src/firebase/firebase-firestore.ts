@@ -1,6 +1,6 @@
 import { app } from "./firebase-config";
 import { getFirestore, collection, setDoc, doc, getDoc, getDocs, deleteDoc } from 'firebase/firestore';
-import { User, setFollowingList, initialState } from "../store/auth-action/authSlice";
+import { User, setFollowingList } from "../store/auth-action/authSlice";
 export const db = getFirestore(app);
 const userCollection = collection(db, 'users');
 

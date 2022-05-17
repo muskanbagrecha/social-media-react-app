@@ -1,4 +1,4 @@
-import { FeedNavigation, WhoToFollow } from "../homepage/components";
+import { FeedNavigation } from "../homepage/components";
 import { MainProfile } from "./components/main-profile/MainProfile";
 export const Profilepage = () => {
   return (

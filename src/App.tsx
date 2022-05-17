@@ -7,18 +7,9 @@ import { auth } from "./firebase/firebaseAuth";
 import { setAuthUser } from "./store/auth-action/authSlice";
 import { setAllUsers } from "./store/users-action/allUsersSlice";
 import { getUser, getAllUsers } from "./firebase/firebase-firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-// async function getLink() {
-//   const storage = getStorage();
-//   const storageRef = ref(storage, "defaults/user-avatar.png");
-//   const url = await getDownloadURL(storageRef);
-//   console.log(url);
-// }
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
-  // getLink();
   const getAllUserHandler = async () => {
     const allUsers = await getAllUsers();
     dispatch(setAllUsers(allUsers));

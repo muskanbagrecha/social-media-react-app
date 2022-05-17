@@ -10,7 +10,7 @@ import {
 } from 'firebase/auth';
 import { getDoc, doc } from "firebase/firestore";
 import {setAuthUser} from "../store/auth-action/authSlice";
-import { addUserToTheDB, getUser, getAllDocumentsFromCollection } from "./firebase-firestore";
+import { addUserToTheDB, getAllDocumentsFromCollection } from "./firebase-firestore";
 import { db } from "./firebase-firestore"
 
 export const auth = getAuth(app);
