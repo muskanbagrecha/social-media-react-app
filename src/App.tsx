@@ -6,7 +6,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseAuth";
 import { setAuthUser } from "./store/auth-action/authSlice";
 import { setAllUsers } from "./store/users-action/allUsersSlice";
-import { getUser, getAllUsers } from "./firebase/firebase-firestore";
+import {
+  getUser,
+  getAllUsers,
+  getAllPosts,
+} from "./firebase/firebase-firestore";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,7 +18,12 @@ export const App: React.FC = () => {
     const allUsers = await getAllUsers();
     dispatch(setAllUsers(allUsers));
   };
-
+  async function getAllPostsHandler() {
+    const allPosts = await getAllPosts();
+    console.log(allPosts);
+    // dispatch(setAllPosts(allPosts));
+  }
+  getAllPostsHandler();
   useEffect(() => {
     // dispatch(setTheme());
     getAllUserHandler();

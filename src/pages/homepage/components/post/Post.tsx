@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { Heart as Like, Comment } from "../../../../assets";
 import "./Post.css";
-export const Post = () => {
+import PropTypes, { InferProps } from "prop-types";
+
+export function Post({
+  caption,
+  image,
+  uid,
+  createdAt,
+}: InferProps<typeof Post.propTypes>) {
+  // export const Post = ({ post }: any) => {
   const [showComments, setShowComments] = useState<boolean>(false);
 
   const commentData = new Array(12).fill({
@@ -19,13 +27,10 @@ export const Post = () => {
         </div>
         <div className="flex flex-col">
           <p className="text-base">Muskan Bagrecha</p>
-          <p className="text-xs">12 hours ago</p>
+          {/* <p className="text-xs">{createdAt.seconds}</p> */}
         </div>
       </header>
-      <img
-        src="https://images.unsplash.com/photo-1556227691-add1cf868ff6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1441&q=80"
-        alt=""
-      />
+      <img src={image} alt={caption} className="w-[616px] h-[616px]" />
       <footer className="p-2">
         <div className="flex justify-between"></div>
         <div className="flex my-2 justify-evenly child:min-w-[8rem] child:py-2 child:px-5 child:gap-2 child:text-base">
@@ -60,10 +65,15 @@ export const Post = () => {
             ))}
         </div>
 
-        <p className="text-sm text-center mt-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, porro.
-        </p>
+        <p className="text-sm text-center mt-4">{caption}</p>
       </footer>
     </article>
   );
+}
+
+Post.propTypes = {
+  caption: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  uid: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 };

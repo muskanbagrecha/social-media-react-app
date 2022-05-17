@@ -1,6 +1,7 @@
 import { app } from "./firebase-config";
-import { getFirestore, collection, setDoc, doc, getDoc, getDocs, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, setDoc, doc, getDoc, getDocs, deleteDoc, addDoc } from 'firebase/firestore';
 import { User, setFollowingList } from "../store/auth-action/authSlice";
+import { uploadPostImage, getImageUrl } from "./firebase-storage";
 export const db = getFirestore(app);
 const userCollection = collection(db, 'users');
 
@@ -110,4 +111,35 @@ const unfollowUser = async (currentUserId : string, userToUnfollowId : string, d
     }
 };
 
-export {addUserToTheDB, getAllUsers, getUser, followUser, unfollowUser, getAllDocumentsFromCollection};
+const postCollection = collection(db, 'posts');
+
+const createPost = async (userId: string, postData: any) => {
+	try {
+		const path = await uploadPostImage(userId, postData.image)
+		const imageUrl = await getImageUrl(path);
+		await addDoc(postCollection, {
+			uid: userId,
+			image: imageUrl,
+			caption: postData.caption,
+			createdAt: postData.createdAt,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+const getAllPosts = async () => {
+	try {
+		const docs = await getDocs(collection(db, 'posts'));
+		const allPostsArray : any[] = []; //TODO: change to post type
+		docs.forEach((doc) => {
+			allPostsArray.push(Object(doc.data()));
+		});
+		return allPostsArray;
+	} catch (error) {
+		console.log(error);
+		return [];
+	}
+}
+
+export {addUserToTheDB, getAllUsers, getUser, followUser, unfollowUser, createPost, getAllPosts, getAllDocumentsFromCollection};
