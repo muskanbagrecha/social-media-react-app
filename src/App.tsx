@@ -1,9 +1,11 @@
-export const App = () => {
+import { Navigation } from "./components";
+import { AppRouter } from "./router/AppRouter";
+
+export const App: React.FC = () => {
   return (
-    <div>
-      
+    <div className="">
+      <Navigation />
+      <AppRouter />
     </div>
   );
 };
-
-export default App;
