@@ -1,0 +1,7 @@
+
+@media screen and (max-width: 768px) {
+    .your-followers-section{
+        display: none;
+    }
+}
+    

@@ -1,5 +1,4 @@
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid';
 
 const storage = getStorage();
 
@@ -17,4 +16,17 @@ const getImageUrl = async (path: string) => {
     return url;
 }
 
-export {uploadPostImage, getImageUrl};
+
+const uploadImageGetUrl = async (file:File, path:string) => {
+	try {
+		const storageRef = ref(storage, path);
+		await uploadBytes(storageRef, file);
+		const url = await getDownloadURL(storageRef);
+		return url;
+	} catch (error) {
+		console.log(error);
+		return null;
+	}
+};
+
+export {uploadPostImage, getImageUrl,uploadImageGetUrl};

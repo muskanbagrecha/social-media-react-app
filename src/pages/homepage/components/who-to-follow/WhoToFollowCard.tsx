@@ -22,16 +22,20 @@ export function WhoToFollowCard({
         navigate("/profile/" + uid);
       }}
     >
-      <img src={photoURL ?? ""} alt="user" className="avatar avatar-xs" />
+      <div className="avatar avatar-xs">
+        <img
+          src={photoURL ?? ""}
+          alt="user"
+          className="img-rounded img-responsive"
+        />
+      </div>
       <p className="text-sm text-gray-200 line-clamp-1">{displayName}</p>
       {!isFollowing ? (
         <button
           className="text-base text-primary-500 hover:text-primary-200 ml-auto"
           onClick={(e) => {
             e.stopPropagation();
-            authUser
-              ? followUser(authUser.uid, uid ?? "", dispatch)
-              : navigate("/login");
+            authUser ? followUser(authUser.uid, uid ?? "") : navigate("/login");
           }}
         >
           Follow
@@ -41,7 +45,7 @@ export function WhoToFollowCard({
           className="text-base text-gray-500 hover:text-primary-200 ml-auto"
           onClick={(e) => {
             e.stopPropagation();
-            unfollowUser(authUser.uid, uid ?? "", dispatch);
+            unfollowUser(authUser.uid, uid ?? "");
           }}
         >
           Unfollow

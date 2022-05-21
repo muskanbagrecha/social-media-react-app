@@ -2,10 +2,6 @@ import { useSelector } from "react-redux";
 import { IRootState } from "../../../../store/store";
 import { WhoToFollowCard } from "./WhoToFollowCard";
 export const WhoToFollow = () => {
-  // const data = new Array(5).fill({
-  //   name: "Dwight Schrute",
-  //   avatar: "https://i.pravatar.cc/300?img=8",
-  // });
   const { authUser } = useSelector((store: IRootState) => store.auth);
   const { allUsers } = useSelector((store: IRootState) => store.allUsers);
   const filteredUsers = allUsers?.filter((user) => user.uid !== authUser?.uid);
@@ -23,20 +19,6 @@ export const WhoToFollow = () => {
               displayName={user.displayName}
               uid={user.uid}
             />
-            // <div className="flex items-center px-2 w-full rounded hover:cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
-            //   <img
-            //     src={photoURL ?? ""}
-            //     alt="user"
-            //     className="avatar avatar-xs"
-            //   />
-            //   <p className="text-sm text-gray-200">{displayName}</p>
-            //   <button className="text-base text-primary-500 hover:text-primary-200 ml-auto">
-            //     Follow
-            //   </button>
-            //   {/* <button className="text-base text-gray-500 hover:text-primary-200 ml-auto">
-            //     Unfollow
-            //   </button> */}
-            // </div>
           ))}
         </div>
       </div>

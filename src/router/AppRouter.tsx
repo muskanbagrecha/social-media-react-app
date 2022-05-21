@@ -9,6 +9,7 @@ import {
   Explorepage,
   // Otherprofilepage,
 } from "../pages";
+import { useSelector } from "react-redux";
 import { AuthenticatedRoutes, UnauthenticatedRoutes } from "../components";
 export const AppRouter = () => {
   return (
@@ -17,7 +18,7 @@ export const AppRouter = () => {
 
       {/* Private routes for authenticated users */}
       <Route element={<AuthenticatedRoutes />}>
-        <Route path="/profile/me" element={<Profilepage />} />
+        {/* <Route path="/profile/me" element={<Profilepage />} /> */}
         <Route path="/bookmark" element={<Bookmarkpage />} />
         <Route path="/likes" element={<Likespage />} />
       </Route>

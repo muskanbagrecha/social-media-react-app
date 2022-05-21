@@ -1,0 +1,12 @@
+.btn-chip {
+    border-radius: 5px;
+    margin: 5px 1rem;
+    border: 1px solid var(--ccc);
+    background-color: var(--color-primary);
+}
+
+.btn.btn-chip:hover,
+.btn-chip--active {
+    background: var(--transparent-primary);
+    border: 1px solid var(--color-primary);
+}
