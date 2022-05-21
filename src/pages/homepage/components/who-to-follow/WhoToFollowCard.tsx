@@ -2,7 +2,7 @@ import {
   followUser,
   unfollowUser,
 } from "../../../../firebase/firebase-firestore";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PropTypes, { InferProps } from "prop-types";
 import { useNavigate } from "react-router-dom";
 

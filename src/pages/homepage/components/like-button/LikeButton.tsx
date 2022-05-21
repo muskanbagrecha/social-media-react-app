@@ -1,10 +1,6 @@
 import { RegularHeart, SolidHeart } from "../../../../assets";
 import { useNavigate } from "react-router-dom";
-import {
-  likePost,
-  unlikePost,
-  db,
-} from "../../../../firebase/firebase-firestore";
+import { likePost, unlikePost } from "../../../../firebase/firebase-firestore";
 import { useSelector } from "react-redux";
 import { PostInterface } from "../../../../store/posts-action/allPosts";
 
