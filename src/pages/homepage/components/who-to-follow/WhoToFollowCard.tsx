@@ -11,7 +11,6 @@ export function WhoToFollowCard({
   displayName,
   uid,
 }: InferProps<typeof WhoToFollowCard.propTypes>) {
-  const dispatch = useDispatch();
   const { authUser, followingList } = useSelector((store: any) => store.auth);
   const isFollowing = followingList?.find((user: any) => user.id === uid);
   let navigate = useNavigate();

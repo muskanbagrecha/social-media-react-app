@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { RegularHeart, SolidHeart } from "../../../../assets";
 import { useNavigate } from "react-router-dom";
 import {
@@ -8,7 +7,6 @@ import {
 } from "../../../../firebase/firebase-firestore";
 import { useSelector } from "react-redux";
 import { PostInterface } from "../../../../store/posts-action/allPosts";
-import { collection, getDocs } from "firebase/firestore";
 
 export const LikeButton = ({
   postId,

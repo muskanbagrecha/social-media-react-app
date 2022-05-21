@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import "./MainProfile.css";
 import {
-  getUser,
   editUserProfileImage,
   getCollectionsSize,
   followUser,

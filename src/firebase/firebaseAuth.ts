@@ -8,7 +8,6 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
 } from 'firebase/auth';
-import { initialState } from "../store/auth-action/authSlice";
 import { getDoc, doc } from "firebase/firestore";
 import {setAuthUser} from "../store/auth-action/authSlice";
 import { addUserToTheDB, getAllDocumentsFromCollection } from "./firebase-firestore";

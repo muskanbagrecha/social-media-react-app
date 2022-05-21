@@ -1,4 +1,4 @@
-import { Gallery, Send, User } from "../../../../assets";
+import { Gallery, Send } from "../../../../assets";
 import { useState } from "react";
 import { createPost } from "../../../../firebase/firebase-firestore";
 import { serverTimestamp } from "firebase/firestore";

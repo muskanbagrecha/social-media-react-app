@@ -6,7 +6,7 @@ import { openModal } from "../../../../store/modal-action/modalSlice";
 
 export const FeedNavigation: React.FC = () => {
   const navigate = useNavigate();
-  const { authUser, bookmarkList } = useSelector((store: any) => store.auth);
+  const { authUser } = useSelector((store: any) => store.auth);
   const dispatch = useDispatch();
   const createPostHandler = () => {
     if (!authUser) {

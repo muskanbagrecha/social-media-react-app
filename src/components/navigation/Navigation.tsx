@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo/logo.png";
 import { User as UserIcon, Logout } from "../../assets";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { SearchBar } from "../searchbar/SearchBar";
 import "./Navigation.css";
 import { IRootState } from "../../store/store";
@@ -10,7 +10,6 @@ import { logoutHandler } from "../../firebase/firebaseAuth";
 export const Navigation: React.FC = () => {
   const navigate = useNavigate();
   const { authUser } = useSelector((store: IRootState) => store.auth);
-  const dispatch = useDispatch();
   return (
     <nav className="navigation px-2 border-b-2 sticky top-0 z-10 bg-primary-200 pr-8 md:pr-10 lg:pr-12">
       <Link to="/">
