@@ -21,7 +21,7 @@ export function WhoToFollowCard({
         navigate("/profile/" + uid);
       }}
     >
-      <div className="avatar avatar-xs">
+      <div className="avatar avatar-xs cursor-pointer shrink-0">
         <img
           src={photoURL ?? ""}
           alt="user"

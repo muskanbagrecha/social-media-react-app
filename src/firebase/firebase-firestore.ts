@@ -147,7 +147,7 @@ const createPost = async (userId: string, postData: any) => {
 const getAllPosts = async () => {
 	try {
 		const docs = await getDocs(collection(db, 'posts'));
-		const allPostsArray : any[] = []; //TODO: change to post type
+		const allPostsArray : any[] = [];
 		docs.forEach((doc) => {
 			allPostsArray.push(Object(doc.data()));
 		});

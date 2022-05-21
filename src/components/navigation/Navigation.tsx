@@ -23,7 +23,7 @@ export const Navigation: React.FC = () => {
         <SearchBar />
         {authUser ? (
           <div
-            className="avatar avatar-xs  cursor-pointer hidden md:flex lg:flex"
+            className="avatar avatar-xs cursor-pointer hidden md:flex lg:flex"
             onClick={() => navigate(`/profile/${authUser?.uid}`)}
             title="profile"
           >

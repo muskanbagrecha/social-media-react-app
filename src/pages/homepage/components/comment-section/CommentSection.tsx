@@ -80,7 +80,7 @@ const SingleComment = ({
   comment: string;
 }) => {
   const { allUsers } = useSelector((store: any) => store.allUsers);
-  const user = allUsers.find((user: User) => user.uid === from);
+  const user = allUsers?.find((user: User) => user.uid === from);
   const { photoURL, displayName } = user;
   return (
     <div className="flex border-b-2 my-2 items-center">
