@@ -1,13 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo/logo.png";
-import { Sun, Moon } from "../../assets";
+import { User, Logout } from "../../assets";
 import { useTheme } from "../../context";
+import { useSelector } from "react-redux";
 import "./Navigation.css";
+import { IRootState } from "../../store/store";
+import { logoutHandler } from "../../firebase/firebaseAuth";
 
 export const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-
+  const { authUser } = useSelector((store: IRootState) => store.auth);
   return (
     <nav className="navigation px-2 border-b-2 sticky top-0 z-10 bg-primary-200 pr-8 md:pr-10 lg:pr-12">
       <Link to="/">
@@ -21,19 +24,28 @@ export const Navigation: React.FC = () => {
         <input
           type="search"
           placeholder="search"
-          className="rounded px-2 py-1 w-52 lg:w-60"
+          className="rounded-sm px-2 py-1 w-52 lg:w-60"
         />
-        <div
-          className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex"
-          onClick={() => navigate("/profile")}
-        >
-          MB
-        </div>
+        {/* {authUser || <User />} */}
+        {authUser ? (
+          <div
+            className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex"
+            onClick={() => navigate("/profile/me")}
+            title="profile"
+          >
+            {authUser?.displayName?.slice(0, 1)}
+          </div>
+        ) : (
+          <div className="cursor-pointer">
+            <User />
+          </div>
+        )}
         <div
           className="cursor-pointer"
           onClick={(): void => toggleTheme(theme)}
         >
-          {theme === "light" ? <Sun /> : <Moon />}
+          {/* {theme === "light" ? <Sun /> : <Moon />} */}
+          <button onClick={logoutHandler}>{authUser && <Logout />}</button>
         </div>
       </div>
     </nav>

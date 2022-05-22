@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fashgram-ui.netlify.app/lighttheme.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
@@ -97,9 +96,17 @@ nav.navigation {
     box-shadow: none;
 }
 
+
+
+@media screen and (max-width: 1028px){
+    .container{
+        max-width: 100%;
+    }
+}
+
 @layer components {
     .container {
-        min-height: 100vh;
+        min-height: 70vh;
         margin: 0 auto;
     }
 }
