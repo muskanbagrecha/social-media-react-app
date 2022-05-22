@@ -1,11 +1,25 @@
 import { FeedNavigation } from "../homepage/components";
-import { MainProfile } from "./components/main-profile/MainProfile";
+import { MainProfile, YourFollowers } from "./components";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { WhoToFollow } from "../homepage/components";
+import { useParams } from "react-router-dom";
+
 export const Profilepage = () => {
+  const [currentUserid, setCurrentUserId] = useState("");
+  const { uid } = useParams();
+  useEffect(() => {
+    if (uid) {
+      setCurrentUserId(uid);
+    }
+  }, [uid]);
+
+  const { authUser } = useSelector((store: any) => store.auth);
   return (
     <div className="container flex flex-col md:flex-row lg:flex-row p-2">
       <FeedNavigation />
       <MainProfile />
-      {/* <WhoToFollow /> */}
+      {authUser?.id === currentUserid ? <WhoToFollow /> : <YourFollowers />}
     </div>
   );
 };

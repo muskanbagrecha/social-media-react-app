@@ -17,7 +17,6 @@ export const AppRouter = () => {
 
       {/* Private routes for authenticated users */}
       <Route element={<AuthenticatedRoutes />}>
-        <Route path="/profile/me" element={<Profilepage />} />
         <Route path="/bookmark" element={<Bookmarkpage />} />
         <Route path="/likes" element={<Likespage />} />
       </Route>

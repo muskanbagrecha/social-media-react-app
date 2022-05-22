@@ -18,13 +18,9 @@ const provider = new GoogleAuthProvider();
 
 export const googleAuthHandler = async (dispatch : Function) => {
     try {
-        // dispatch(setIsLoading(true));
         await signInWithPopup(auth, provider);
-        // const userExists = await getUser(auth?.currentUser?.uid);
-        // console.log(userExists);
         const docSnap = await getDoc(doc(db, `users`, auth?.currentUser?.uid ?? ""));
         if (docSnap.exists()) {
-            // return docSnap.data();
         } else {
             await addUserToTheDB(auth?.currentUser?.uid,
                  {		
@@ -37,45 +33,29 @@ export const googleAuthHandler = async (dispatch : Function) => {
                     backgroundImageURL: '',
                 });
         }
-        // !userExists.authUser && await addUserToTheDB(auth?.currentUser?.uid, {		
-        //     displayName: auth.currentUser?.displayName,
-        //     uid: auth.currentUser?.uid,
-        //     photoURL: auth.currentUser?.photoURL,
-        //     email: auth.currentUser?.email,
-        //     bio: '',
-        //     portfolio: '',
-        //     backgroundImageURL: '',});
     } catch (error) {
         console.log(error);
-        // errorHandler(true, error.message);
-        // dispatch(setIsLoading(false));
     }
 };
 
 export const loginHandler = async(email : string, password : string, dispatch: Function) => {
     try {
-		// dispatch(setIsLoading(true));
 		await signInWithEmailAndPassword(auth, email, password);
         const followersList = await getAllDocumentsFromCollection(`users/${auth?.currentUser?.uid}/followers`);
 		const followingList = await getAllDocumentsFromCollection(`users/${auth?.currentUser?.uid}/following`);
 
-        dispatch(setAuthUser({authUser: {uid: auth?.currentUser?.uid, email: "", displayName: "", photoURL: "", bio: "", portfolio: "", backgroundImageURL: ""}, followersList, followingList, postsList : [], isLoading: false, error: ""}));
+        dispatch(setAuthUser({authUser: {uid: auth?.currentUser?.uid, email: "", displayName: "", photoURL: "", bio: "", portfolio: "", backgroundImageURL: ""}, followersList, followingList, postsList : null, likesList: null, bookmarkList: null, isLoading: false, error: ""}));
         
-		// dispatch(setIsLoading(false));
 	} catch (error : any) {
 		console.log(error.message);
-		// errorHandler(true, error.message);
-		// dispatch(setIsLoading(false));
 	}
 }
 
 export const signupHandler = async(name: string, email : string, password : string, dispatch: Function) => {
     try {
-        // dispatch(setIsLoading(true));
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(userCredential.user, {
 			displayName: name,
-			// photoURL: defaultImage,
 		});
         await addUserToTheDB(auth?.currentUser?.uid, {	
             displayName: auth.currentUser?.displayName,
@@ -85,11 +65,8 @@ export const signupHandler = async(name: string, email : string, password : stri
             bio: '',
             portfolio: '',
             backgroundImageURL: '',});
-        // dispatch(setIsLoading(false));
     } catch (error) {
         console.log(error);
-        // errorHandler(true, error.message);
-        // dispatch(setIsLoading(false));
     }
 }
 

@@ -1,14 +1,3 @@
-.main-feed{
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-    "moments"
-    "create-post"
-    "posts"; */
-}
-
-@media screen and (max-width: 640px) {
-    .main-feed{
-        
-    }
-}
+/* .main-feed{
+    max-width: 300px;
+} */

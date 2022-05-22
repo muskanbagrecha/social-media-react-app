@@ -64,7 +64,18 @@ export function Explore(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function Bookmark(props: SVGProps<SVGSVGElement>) {
+export function RegularBookmark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="m7 17.95l5-2.15l5 2.15V5H7ZM5 21V5q0-.825.588-1.413Q6.175 3 7 3h10q.825 0 1.413.587Q19 4.175 19 5v16l-7-3ZM17 5H7h10Z"
+      ></path>
+    </svg>
+  );
+}
+
+export function SolidBookmark(props: SVGProps<SVGSVGElement>) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
       <path
@@ -88,8 +99,13 @@ export function Notification(props: SVGProps<SVGSVGElement>) {
 
 export function User(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill="currentColor" d="M4 22a8 8 0 1 1 16 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6z"></path></svg>
-  )
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="M4 22a8 8 0 1 1 16 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6z"
+      ></path>
+    </svg>
+  );
 }
 
 export function Gallery(props: SVGProps<SVGSVGElement>) {
@@ -122,12 +138,28 @@ export function Send(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function Heart(props: SVGProps<SVGSVGElement>) {
+export function RegularHeart(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 256 256" {...props}>
       <path
         fill="currentColor"
-        d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z"
+        d="M128 226.2a20.1 20.1 0 0 1-14.2-5.8l-83.1-83.1a64.1 64.1 0 0 1 2.5-92.9a62.1 62.1 0 0 1 46-15.6a68.8 68.8 0 0 1 44.1 20l4.7 4.7l6.7-6.8a64.1 64.1 0 0 1 92.9 2.5a62.1 62.1 0 0 1 15.6 46a68.8 68.8 0 0 1-20 44.1l-81.1 81.1a19.8 19.8 0 0 1-14.1 5.8Zm5.6-14.3ZM75 52.7a38.1 38.1 0 0 0-25.7 9.5a40 40 0 0 0-1.6 58.1l80.3 80.3l78.2-78.2c15.9-16 17.5-41.6 3.6-57.1a40 40 0 0 0-58.1-1.6l-15.2 15.2a12 12 0 0 1-17 0l-13.2-13.1A44.2 44.2 0 0 0 75 52.7Z"
+      ></path>
+    </svg>
+  );
+}
+
+export function SolidHeart(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 256 256" {...props}>
+      <path
+        fill="currentColor"
+        d="m133.6 211.9l81.1-81c19.9-20 22.8-52.7 4-73.6a52 52 0 0 0-75.5-2.1L128 70.5l-13.2-13.2c-19.9-19.9-52.6-22.8-73.6-4a52 52 0 0 0-2 75.5l83.1 83.1a8 8 0 0 0 11.3 0Z"
+        opacity="1"
+      ></path>
+      <path
+        fill="currentColor"
+        d="M128 222.2a15.6 15.6 0 0 1-11.3-4.7l-83.2-83.1a60 60 0 0 1 2.4-87a57.6 57.6 0 0 1 43-14.6a64.5 64.5 0 0 1 41.6 18.9l7.5 7.4l9.5-9.5a60 60 0 0 1 87.1 2.3c10.5 11.6 15.6 26.9 14.6 43.1a64.3 64.3 0 0 1-18.9 41.5l-81 81a15.6 15.6 0 0 1-11.3 4.7ZM75 48.7a42.3 42.3 0 0 0-28.4 10.5a44 44 0 0 0-1.7 63.9l88.7 88.8l-5.6-5.7l81-81c17.4-17.4 19.1-45.5 3.7-62.6a43.9 43.9 0 0 0-63.8-1.7l-15.3 15.2a8 8 0 0 1-11.3 0L109.2 63A48.5 48.5 0 0 0 75 48.7Z"
       ></path>
     </svg>
   );
@@ -207,6 +239,40 @@ export function Logout(props: SVGProps<SVGSVGElement>) {
         fill="currentColor"
         d="M9 11h8.175l-2.55-2.55L16 7l5 5l-5 5l-1.375-1.45l2.55-2.55H9Zm3-8v2H5v14h7v2H5q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3Z"
       ></path>
+    </svg>
+  );
+}
+
+export function Trash(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 512 512" {...props}>
+      <path
+        d="M413.7 133.4c-2.4-9-4-14-4-14-2.6-9.3-9.2-9.3-19-10.9l-53.1-6.7c-6.6-1.1-6.6-1.1-9.2-6.8-8.7-19.6-11.4-31-20.9-31h-103c-9.5 0-12.1 11.4-20.8 31.1-2.6 5.6-2.6 5.6-9.2 6.8l-53.2 6.7c-9.7 1.6-16.7 2.5-19.3 11.8 0 0-1.2 4.1-3.7 13-3.2 11.9-4.5 10.6 6.5 10.6h302.4c11 .1 9.8 1.3 6.5-10.6z"
+        fill="currentColor"
+      ></path>
+      <path
+        d="M379.4 176H132.6c-16.6 0-17.4 2.2-16.4 14.7l18.7 242.6c1.6 12.3 2.8 14.8 17.5 14.8h207.2c14.7 0 15.9-2.5 17.5-14.8l18.7-242.6c1-12.6.2-14.7-16.4-14.7z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  );
+}
+
+export function Check(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
+      ></path>
+    </svg>
+  );
+}
+
+export function Plus(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"></path>
     </svg>
   );
 }

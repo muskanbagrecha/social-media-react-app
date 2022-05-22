@@ -1,3 +1,9 @@
-export { FeedNavigation } from "./feed-navigation/FeedNavigation";
 export { WhoToFollow } from "./who-to-follow/WhoToFollow";
+export { Post } from "./post/Post";
+export { BookmarkButton } from "./bookmark-button/BookmarkButton";
+export { CommentSection } from "./comment-section/CommentSection";
+export { LikeButton } from "./like-button/LikeButton";
+export { FeedNavigation } from "./feed-navigation/FeedNavigation";
 export { MainFeed } from "./main-feed/MainFeed"; 
+export { CreatePost } from "./create-post/CreatePost"
+export { WhoToFollowCard } from "./who-to-follow/WhoToFollowCard";

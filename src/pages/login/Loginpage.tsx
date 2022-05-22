@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import phoneImage from "../../assets/images/phone.svg";
-import { Google } from "../../assets";
+import { Google, CloseEye, OpenEye } from "../../assets";
 import { googleAuthHandler, loginHandler } from "../../firebase/firebaseAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, FC } from "react";
@@ -12,13 +12,13 @@ export const Loginpage: FC = () => {
     email: "",
     password: "",
   });
-
+  const dispatch = useDispatch();
   const loginInputChangeHandler = (e: { target: HTMLInputElement }) => {
     setLoginInput({ ...loginInput, [e.target.name]: e.target.value });
   };
-
-  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
   const { error } = useSelector((store: IRootState) => store.auth);
+
   const formSubmitHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     dispatch(setError(""));
@@ -48,15 +48,21 @@ export const Loginpage: FC = () => {
                 />
               </div>
 
-              <div className="mb-6">
+              <div className="mb-6 flex items-center">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-primary-500"
                   placeholder="Password"
                   required
                   onChange={loginInputChangeHandler}
                   name="password"
                 />
+                <span
+                  className="-ml-8 cursor-pointer"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
+                  {showPassword ? <CloseEye /> : <OpenEye />}
+                </span>
               </div>
 
               <div className="flex justify-between items-center mb-6">

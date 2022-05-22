@@ -2,14 +2,40 @@
     margin: 1rem 0;
 }
 
+.img-wrapper{
+    min-height: min-content;
+}
+
 .post{
-    min-height: 20rem;
+    animation-name: post-card-animation;
+	animation-duration: 0.4s;
+}
+
+@keyframes post-card-animation {
+    0% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	25% {
+		opacity: 0.2;
+		transform: scale(1.03);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.post .img-wrapper img{
+    max-height: 616px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .post header{
     display: flex;
     align-items: center;
-    /* padding: 0 8px; */
 }
 
 hr{
