@@ -5,36 +5,30 @@ import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseAuth";
 import { setAuthUser } from "./store/auth-action/authSlice";
-import { getUser } from "./firebase/firebase-firestore";
+import { setAllUsers } from "./store/users-action/allUsersSlice";
+import { getUser, getAllUsers } from "./firebase/firebase-firestore";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
+  const getAllUserHandler = async () => {
+    const allUsers = await getAllUsers();
+    dispatch(setAllUsers(allUsers));
+  };
 
   useEffect(() => {
     // dispatch(setTheme());
+    getAllUserHandler();
     onAuthStateChanged(auth, async (user) => {
+      console.log(user);
       if (user) {
-        // dispatch(
-        //   setAuthUser({
-        //     uid: user.uid,
-        //     email: user.email,
-        //     displayName: user.displayName,
-        //     photoURL: user.photoURL,
-        //     bio: "",
-        //     portfolio: "",
-        //     backgroundImageURL: "",
-        //     followers: 0,
-        //     following: 0,
-        //     posts: 0,
-        //   })
-        // );
         const authenticatedUser = await getUser(user.uid);
         dispatch(setAuthUser(authenticatedUser));
-        if (!authenticatedUser)
+        if (!authenticatedUser) {
           setTimeout(async () => {
             const authenticatedUser = await getUser(user.uid);
             dispatch(setAuthUser(authenticatedUser));
           }, 1000);
+        }
       } else {
         dispatch(setAuthUser(null));
       }

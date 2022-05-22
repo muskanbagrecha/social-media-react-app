@@ -1,47 +1,85 @@
 import { Link } from "react-router-dom";
-import { Pencil } from "../../../../assets";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import "./MainProfile.css";
+import { getUser } from "../../../../firebase/firebase-firestore";
+import {
+  AuthSliceState,
+  initialState,
+} from "../../../../store/auth-action/authSlice";
+import { useState, useEffect } from "react";
+
 export const MainProfile = () => {
+  const { uid: otherUid } = useParams();
+  const [user, setUser] = useState<AuthSliceState>(initialState);
+  let tempUser = useSelector((store: any) => store.auth);
+
+  const getUserData = async () => {
+    if (otherUid) {
+      setUser((await getUser(otherUid)) ?? initialState);
+    }
+  };
+
+  useEffect(() => {
+    if (otherUid) {
+      getUserData();
+    } else {
+      setUser(tempUser);
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const { authUser: userData, followersList, followingList, postsList } = user;
+  console.log(userData);
+
   return (
     <div className="w-full md:w-3/5 lg:w-3/5 flex flex-col gap-4 rounded  child:mx-auto mt-2">
       <div className="flex gap-6 items-center">
-        <div className="h-32 w-32">
+        <div className={`h-32 w-32 ${otherUid ? "" : "profile-pic"}`}>
           <img
-            src="https://images.unsplash.com/photo-1606143412458-acc5f86de897?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80"
-            alt=""
-            className="img-rounded img-responsive"
+            src={userData?.photoURL || ""}
+            alt={userData?.displayName || ""}
+            className="img-rounded img-responsive cursor-pointer"
           />
+          <div className="profile-overlay">
+            <button className="profile-overlay-text">Edit</button>
+          </div>
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="large-title text-2xl md:text-3xl lg:text-2xl">
-              Muskan Bagrecha
-            </h1>
-            <span className="text-base text-gray-500 cursor-pointer">
-              <Pencil />
-            </span>
+            <h1 className="large-title text-2xl">{userData?.displayName}</h1>
           </div>
-          <button
-            type="button"
-            className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base"
-          >
-            Follow
-          </button>
+          {otherUid ? (
+            <button
+              type="button"
+              className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base"
+            >
+              Follow
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base"
+            >
+              Edit Profile
+            </button>
+          )}
+
           <Link to="/" className="text-primary-500 text-sm">
-            muskanbagrecha04@gmail.com
+            {userData?.email}
           </Link>
         </div>
       </div>
       <div className="flex text-sm gap-8">
-        <div className="flex flex-col items-center">
-          <span>10</span>
+        <div className="flex flex-col items-center  cursor-pointer">
+          <span>{followersList?.length}</span>
           <span>Followers</span>
         </div>
-        <div className="flex flex-col items-center">
-          <span>10</span>
+        <div className="flex flex-col items-center  cursor-pointer">
+          <span>{followingList?.length}</span>
           <span>Following</span>
         </div>
-        <div className="flex flex-col items-center">
-          <span>10</span>
+        <div className="flex flex-col items-center  cursor-pointer">
+          <span>{postsList?.length}</span>
           <span>Posts</span>
         </div>
       </div>

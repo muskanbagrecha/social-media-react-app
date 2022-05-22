@@ -1,0 +1,28 @@
+.profile-pic{
+    position: relative;
+    color: var(--color-current);
+}
+
+.profile-overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .5s ease;
+    opacity: 0;
+}
+
+.profile-pic:hover img{
+    filter: blur(1.1px);
+    background-color: var(--color-current);
+}
+
+.profile-pic:hover .profile-overlay{
+    opacity: 1;
+}
+
+.profile-overlay-text{
+    background-color: #000;
+    padding: 4px 1.5rem;
+    font-size: 1rem;
+}

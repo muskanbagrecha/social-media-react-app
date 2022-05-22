@@ -26,17 +26,25 @@ export const Navigation: React.FC = () => {
           placeholder="search"
           className="rounded-sm px-2 py-1 w-52 lg:w-60"
         />
-        {/* {authUser || <User />} */}
         {authUser ? (
           <div
             className="avatar avatar-xs avatar-text cursor-pointer hidden md:flex lg:flex"
             onClick={() => navigate("/profile/me")}
             title="profile"
           >
-            {authUser?.displayName?.slice(0, 1)}
+            {/* {authUser?.displayName?.slice(0, 1)} */}
+            <img
+              src={authUser.photoURL ?? ""}
+              alt={authUser.displayName ?? "profile"}
+              className="img-rounded img-responsive"
+            />
           </div>
         ) : (
-          <div className="cursor-pointer">
+          <div
+            className="cursor-pointer"
+            title="login"
+            onClick={() => navigate("/login")}
+          >
             <User />
           </div>
         )}

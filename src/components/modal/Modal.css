@@ -1,0 +1,42 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+  
+  .modal {
+    position: fixed !important;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 30;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  @media (min-width: 768px) {
+    .modal {
+      width: 30rem;
+      left: calc(50% - 15rem);
+    }
+  }
+  
+  .modal__header {
+    background: var(--nav-color);
+    padding: 1rem;
+  }
+  
+  .modal__header h4 {
+    margin: 0;
+  }
+  
+  .modal__content {
+    padding: 1rem;
+}

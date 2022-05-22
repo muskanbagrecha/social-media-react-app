@@ -8,19 +8,22 @@ export interface User{
     bio: string | null | undefined;
     portfolio: string | null | undefined;
     backgroundImageURL: string | null | undefined;
-    followers: number | null | undefined;
-    following: number | null | undefined;
-    posts: number | null | undefined;
 }
 
-interface AuthSliceState {
-    authUser: User | null;
+export interface AuthSliceState {
+    authUser: User | null | undefined;
+    followersList: User[] | null | undefined;
+    followingList: User[] | null | undefined;
+    postsList: User[] | null | undefined;
     isLoading: boolean;
     error: string;
 }
 
-const initialState : AuthSliceState = {
+export const initialState : AuthSliceState = {
 	authUser: null,
+    followersList: [],
+    followingList: [],
+    postsList: [],
 	isLoading: false,
 	error: "",
 };
@@ -29,8 +32,10 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		setAuthUser: (state, action : PayloadAction<User | null>) => {
-			state.authUser = action.payload;
+		setAuthUser: (state, action : PayloadAction<AuthSliceState | null>) => {
+			state.authUser = action.payload?.authUser;
+            state.followersList = action.payload?.followersList
+            state.followingList = action.payload?.followingList
 		},
 		setIsLoading: (state, action : PayloadAction<boolean>) => {
 			state.isLoading = action.payload;
@@ -38,9 +43,12 @@ const authSlice = createSlice({
         setError: (state, action : PayloadAction<string>) => {
 			state.error = action.payload;
 		},
+        setFollowingList: (state, action : PayloadAction<User[] | null>) => {
+            state.followingList = action.payload;
+        }
 	},
 });
 
-export const { setAuthUser, setIsLoading, setError } = authSlice.actions;
+export const { setAuthUser, setIsLoading, setError, setFollowingList } = authSlice.actions;
 
 export default authSlice.reducer;
