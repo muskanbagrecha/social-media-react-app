@@ -9,6 +9,7 @@
 .post{
     animation-name: post-card-animation;
 	animation-duration: 0.4s;
+    width: 100%;
 }
 
 @keyframes post-card-animation {

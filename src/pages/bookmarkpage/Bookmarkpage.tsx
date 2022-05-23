@@ -15,7 +15,7 @@ export const Bookmarkpage = () => {
   );
 
   return (
-    <div className="container flex flex-col md:flex-row lg:flex-row p-2">
+    <div className="container max-w-[1100px] flex flex-col md:flex-row lg:flex-row p-2">
       <FeedNavigation />
       <div className="w-full md:w-3/5 lg:w-3/5 flex flex-col gap-4 rounded  child:mx-auto mt-2">
         <h1 className="large-title text-4xl">Bookmarks</h1>

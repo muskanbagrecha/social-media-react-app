@@ -124,7 +124,7 @@ export const MainProfile = () => {
     currentUser;
 
   return (
-    <div className="w-full md:w-3/5 lg:w-3/5 flex flex-col gap-4 rounded  child:mx-auto mt-2">
+    <div className="w-full md:w-3/5 lg:w-3/5 flex flex-col gap-4 rounded child:mx-auto mt-2 main-feed">
       <div className="flex gap-6 items-center">
         <div
           className={`h-32 w-32 relative ${
