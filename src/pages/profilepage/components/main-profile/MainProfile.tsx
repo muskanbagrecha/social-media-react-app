@@ -137,20 +137,22 @@ export const MainProfile = () => {
             className="img-rounded img-responsive cursor-pointer"
           />
 
-          <div className="profile-overlay ">
-            <label
-              htmlFor="edit-profile"
-              className="profile-overlay-text cursor-pointer"
-            >
-              Edit
-              <input
-                id="edit-profile"
-                type="file"
-                onChange={changeImageHandler}
-                className="bg-primary-200 hidden"
-              />
-            </label>
-          </div>
+          {otherUid === authUser?.uid && (
+            <div className="profile-overlay ">
+              <label
+                htmlFor="edit-profile"
+                className="profile-overlay-text cursor-pointer"
+              >
+                Edit
+                <input
+                  id="edit-profile"
+                  type="file"
+                  onChange={changeImageHandler}
+                  className="bg-primary-200 hidden"
+                />
+              </label>
+            </div>
+          )}
         </div>
         <div>
           <div className="flex items-center gap-2">
@@ -199,7 +201,7 @@ export const MainProfile = () => {
           <span>{followings}</span>
           <span>Following</span>
         </div>
-        <div className="flex flex-col items-center  cursor-pointer">
+        <div className="flex flex-col items-center cursor-pointer">
           <span>{posts.length}</span>
           <span>Posts</span>
         </div>

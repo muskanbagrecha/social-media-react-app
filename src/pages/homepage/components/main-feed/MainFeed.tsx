@@ -41,7 +41,17 @@ export const MainFeed: React.FC = () => {
       <CreatePost />
       <div className="all-posts flex flex-col">
         {posts.length === 0 ? (
-          <h1>No posts to show!</h1>
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="text-center">No posts to show!</h1>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                navigate("/explore");
+              }}
+            >
+              Explore More
+            </button>
+          </div>
         ) : (
           posts?.map((post: PostInterface) => (
             <Post

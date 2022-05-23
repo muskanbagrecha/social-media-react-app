@@ -129,6 +129,7 @@ const createPost = async (userId: string, postData: any) => {
 			image: imageUrl,
 			caption: postData.caption,
 			createdAt: postData.createdAt,
+			totalLikes: 0,
 		});
 		await setDoc(
 			doc(postCollection, documentId.id),

@@ -26,3 +26,7 @@
     padding: 4px 1.5rem;
     font-size: 1rem;
 }
+
+.main-profile-posts .post{
+    width: 97%;
+}

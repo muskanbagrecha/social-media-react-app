@@ -16,7 +16,7 @@ export function WhoToFollowCard({
   let navigate = useNavigate();
   return (
     <div
-      className="flex items-center px-1 w-full rounded hover:cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+      className="flex items-center px-1 gap-[4px] w-full rounded hover:cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
       onClick={() => {
         navigate("/profile/" + uid);
       }}
