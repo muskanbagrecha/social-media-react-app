@@ -37,6 +37,7 @@ export const ChatPage = () => {
   return (
     <div>
       <div className="chat-container">
+        <h1 className="large-title text-3xl text-center">All chats</h1>
         {allChats.length > 0 ? (
           allChats.map(({ chatId, user }) => {
             const userDetails = getUserDetails(
