@@ -67,16 +67,16 @@ body::-webkit-scrollbar,
 {
     width: 10px;
     height: 10px;
+    background-color: rgba(var(--color-primary-values), 0.5)
 }
 
 body::-webkit-scrollbar-thumb,
 .comment-holder::-webkit-scrollbar-thumb,
 .search-data::-webkit-scrollbar-thumb,
 .all-user-div::-webkit-scrollbar-thumb
-.conversation-body::-webkit-scrollbar
+.conversation-body::-webkit-scrollbar-thumb
 {
-    background-color: rgba(var(--color-primary-values), 0.5)
-    ;
+    background-color: black;
 }
 
 body,
