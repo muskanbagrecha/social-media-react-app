@@ -7,8 +7,10 @@ import {
   Loginpage,
   Signuppage,
   Explorepage,
-  // Otherprofilepage,
+  ChatPage,
+  ConversationPage,
 } from "../pages";
+
 import { AuthenticatedRoutes, UnauthenticatedRoutes } from "../components";
 export const AppRouter = () => {
   return (
@@ -19,6 +21,11 @@ export const AppRouter = () => {
       <Route element={<AuthenticatedRoutes />}>
         <Route path="/bookmark" element={<Bookmarkpage />} />
         <Route path="/likes" element={<Likespage />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route
+          path="/chat/conversation/:chatId"
+          element={<ConversationPage />}
+        />
       </Route>
 
       {/* Private routes for unauthenticated users */}

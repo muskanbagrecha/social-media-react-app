@@ -21,7 +21,7 @@ export const UserFollowers = () => {
       <div className="create-icon avatar avatar-xs" onClick={createPostHandler}>
         <Plus />
       </div>
-      <div className="overflow-y-auto p-3 md:py-4 lg-py-4 bg-gray-50 dark:bg-gray-800 rounded sticky top-20">
+      <div className="overflow-y-auto p-3 md:py-4 lg-py-4 bg-gray-50 dark:bg-gray-800 rounded sticky top-20 all-user-div">
         <p className="dark:text-white transition duration-75 text-base font-normal text-center">
           Your followers
         </p>

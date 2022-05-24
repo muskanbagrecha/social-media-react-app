@@ -6,3 +6,5 @@ export * from "./login/Loginpage";
 export * from "./signup/Signuppage";
 export * from "./explorepage/Explorepage";
 export * from "./otherprofilepage/Otherprofilepage";
+export * from "./chatpage/Chatpage";
+export *  from './chatpage/components/Conversationpage'

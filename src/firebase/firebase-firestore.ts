@@ -255,7 +255,6 @@ const getCommentsFromPost = async (postId:string) => {
 			console.log(doc.data())
 			allCommentsData.push(doc.data());
 		});
-		// console.log(allCommentsData)
 		return allCommentsData;
 	} catch (error) {
 		console.log(error);
@@ -309,6 +308,20 @@ const getCollectionsSize = async (path:string) => {
 		return 0;
 	}
 };
-export {addUserToTheDB, getAllUsers, getUser, updateUserDB, followUser, unfollowUser, createPost, getAllPosts, editPost, likePost, deletePost, addCommentToPost, getAllDocumentsFromCollection, unlikePost, getCommentsFromPost, addToBookmark, removeFromBookmark,editUserProfileImage,getCollectionsSize};
+
+const initiateChat = async (uid:string, otherUid:string | undefined) => {
+	const chatCollection = collection(db, `chats`);
+	const chatDocuments = await getDocs(chatCollection);
+	chatDocuments.forEach((doc) => {
+		if(doc.id === `${uid}_${otherUid}` || doc.id === `${otherUid}_${uid}`) {
+			return;
+		}
+	})
+	const chatId = `${uid}_${otherUid}`;
+	await setDoc(doc(chatCollection, chatId), {user: [uid, otherUid], chatId: chatId}, {merge: true});
+}
+
+
+export {addUserToTheDB, getAllUsers, getUser, updateUserDB, followUser, unfollowUser, createPost, getAllPosts, editPost, likePost, deletePost, addCommentToPost, getAllDocumentsFromCollection, unlikePost, initiateChat, getCommentsFromPost, addToBookmark, removeFromBookmark,editUserProfileImage,getCollectionsSize};
 
 

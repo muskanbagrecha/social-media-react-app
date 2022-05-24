@@ -276,3 +276,25 @@ export function Plus(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function Chat(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="M6 14h8v-2H6Zm0-3h12V9H6Zm0-3h12V6H6ZM2 22V4q0-.825.588-1.413Q3.175 2 4 2h16q.825 0 1.413.587Q22 3.175 22 4v12q0 .825-.587 1.413Q20.825 18 20 18H6Z"
+      ></path>
+    </svg>
+  );
+}
+
+export function BackIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="currentColor"
+        d="m12 20l-8-8l8-8l1.425 1.4l-5.6 5.6H20v2H7.825l5.6 5.6Z"
+      ></path>
+    </svg>
+  );
+}

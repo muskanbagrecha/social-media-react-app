@@ -6,6 +6,7 @@ import {
   getCollectionsSize,
   followUser,
   unfollowUser,
+  initiateChat,
 } from "../../../../firebase/firebase-firestore";
 import { useState, useEffect } from "react";
 import { User, setPhotoURL } from "../../../../store/auth-action/authSlice";
@@ -120,6 +121,15 @@ export const MainProfile = () => {
     }
   };
 
+  const chatClickHandler = async (otherUid: string | undefined) => {
+    if (!authUser) {
+      navigate("/login");
+      return;
+    }
+    await initiateChat(authUser.uid, otherUid);
+    navigate(`/chat`);
+  };
+
   const { bio, displayName, photoURL, uid, portfolio, followers, followings } =
     currentUser;
 
@@ -160,19 +170,27 @@ export const MainProfile = () => {
           </div>
           {otherUid &&
             (otherUid !== authUser?.uid ? (
-              <button
-                type="button"
-                className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base"
-                onClick={() => {
-                  if (isFollowing) {
-                    unfollowingHandler(authUser?.uid, uid);
-                  } else {
-                    followHandler(authUser.uid, otherUid);
-                  }
-                }}
-              >
-                {authUser ? (isFollowing ? "Unfollow" : "Follow") : "Follow"}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base w-24"
+                  onClick={() => {
+                    if (isFollowing) {
+                      unfollowingHandler(authUser?.uid, uid);
+                    } else {
+                      followHandler(authUser.uid, otherUid);
+                    }
+                  }}
+                >
+                  {authUser ? (isFollowing ? "Unfollow" : "Follow") : "Follow"}
+                </button>
+                <button
+                  className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base w-24"
+                  onClick={() => chatClickHandler(otherUid)}
+                >
+                  Chat
+                </button>
+              </div>
             ) : (
               <button
                 type="button"
