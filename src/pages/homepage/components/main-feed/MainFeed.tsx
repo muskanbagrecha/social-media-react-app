@@ -40,17 +40,31 @@ export const MainFeed: React.FC = () => {
     <main className="w-full md:w-3/5 lg:w-3/5 flex flex-col main-feed rounded relative">
       <CreatePost />
       <div className="all-posts flex flex-col">
-        {posts?.map((post: PostInterface) => (
-          <Post
-            caption={post.caption}
-            image={post.image}
-            uid={post.uid}
-            createdAt={post.createdAt}
-            key={post.postId}
-            postId={post.postId}
-            totalLikes={post.totalLikes}
-          />
-        ))}
+        {posts.length === 0 ? (
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="text-center">No posts to show!</h1>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                navigate("/explore");
+              }}
+            >
+              Explore More
+            </button>
+          </div>
+        ) : (
+          posts?.map((post: PostInterface) => (
+            <Post
+              caption={post.caption}
+              image={post.image}
+              uid={post.uid}
+              createdAt={post.createdAt}
+              key={post.postId}
+              postId={post.postId}
+              totalLikes={post.totalLikes}
+            />
+          ))
+        )}
       </div>
       <button
         className="btn-floating hidden sm:flex md:flex lg:flex items-center fixed bottom-8 right-8 md:right-12"

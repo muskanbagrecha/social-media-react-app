@@ -6,6 +6,7 @@ import {
   getCollectionsSize,
   followUser,
   unfollowUser,
+  initiateChat,
 } from "../../../../firebase/firebase-firestore";
 import { useState, useEffect } from "react";
 import { User, setPhotoURL } from "../../../../store/auth-action/authSlice";
@@ -120,11 +121,20 @@ export const MainProfile = () => {
     }
   };
 
+  const chatClickHandler = async (otherUid: string | undefined) => {
+    if (!authUser) {
+      navigate("/login");
+      return;
+    }
+    await initiateChat(authUser.uid, otherUid);
+    navigate(`/chat`);
+  };
+
   const { bio, displayName, photoURL, uid, portfolio, followers, followings } =
     currentUser;
 
   return (
-    <div className="w-full md:w-3/5 lg:w-3/5 flex flex-col gap-4 rounded  child:mx-auto mt-2">
+    <div className="w-full md:w-3/5 lg:w-3/5 flex flex-col gap-4 rounded child:mx-auto mt-2 main-feed">
       <div className="flex gap-6 items-center">
         <div
           className={`h-32 w-32 relative ${
@@ -137,20 +147,22 @@ export const MainProfile = () => {
             className="img-rounded img-responsive cursor-pointer"
           />
 
-          <div className="profile-overlay ">
-            <label
-              htmlFor="edit-profile"
-              className="profile-overlay-text cursor-pointer"
-            >
-              Edit
-              <input
-                id="edit-profile"
-                type="file"
-                onChange={changeImageHandler}
-                className="bg-primary-200 hidden"
-              />
-            </label>
-          </div>
+          {otherUid === authUser?.uid && (
+            <div className="profile-overlay ">
+              <label
+                htmlFor="edit-profile"
+                className="profile-overlay-text cursor-pointer"
+              >
+                Edit
+                <input
+                  id="edit-profile"
+                  type="file"
+                  onChange={changeImageHandler}
+                  className="bg-primary-200 hidden"
+                />
+              </label>
+            </div>
+          )}
         </div>
         <div>
           <div className="flex items-center gap-2">
@@ -158,19 +170,27 @@ export const MainProfile = () => {
           </div>
           {otherUid &&
             (otherUid !== authUser?.uid ? (
-              <button
-                type="button"
-                className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base"
-                onClick={() => {
-                  if (isFollowing) {
-                    unfollowingHandler(authUser?.uid, uid);
-                  } else {
-                    followHandler(authUser.uid, otherUid);
-                  }
-                }}
-              >
-                {authUser ? (isFollowing ? "Unfollow" : "Follow") : "Follow"}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base w-24"
+                  onClick={() => {
+                    if (isFollowing) {
+                      unfollowingHandler(authUser?.uid, uid);
+                    } else {
+                      followHandler(authUser.uid, otherUid);
+                    }
+                  }}
+                >
+                  {authUser ? (isFollowing ? "Unfollow" : "Follow") : "Follow"}
+                </button>
+                <button
+                  className="font-medium text-gray-900 rounded  bg-primary-100 hover:text-primary-500 flex items-center justify-center px-4 py-1 text-base w-24"
+                  onClick={() => chatClickHandler(otherUid)}
+                >
+                  Chat
+                </button>
+              </div>
             ) : (
               <button
                 type="button"
@@ -199,7 +219,7 @@ export const MainProfile = () => {
           <span>{followings}</span>
           <span>Following</span>
         </div>
-        <div className="flex flex-col items-center  cursor-pointer">
+        <div className="flex flex-col items-center cursor-pointer">
           <span>{posts.length}</span>
           <span>Posts</span>
         </div>

@@ -16,7 +16,7 @@ export const AllPosts = (props: { userId: string }) => {
   }, [allPosts, userId]);
 
   return (
-    <>
+    <div className="main-profile-posts">
       {currentUserPosts.length > 0 ? (
         currentUserPosts.map((post: PostInterface) => (
           <Post
@@ -32,6 +32,6 @@ export const AllPosts = (props: { userId: string }) => {
       ) : (
         <h1>No posts to show!</h1>
       )}
-    </>
+    </div>
   );
 };

@@ -61,18 +61,22 @@
 
 body::-webkit-scrollbar,
 .comment-holder::-webkit-scrollbar,
-.search-data::-webkit-scrollbar 
+.search-data::-webkit-scrollbar,
+.all-user-div::-webkit-scrollbar,
+.conversation-body::-webkit-scrollbar
 {
     width: 10px;
     height: 10px;
+    background-color: rgba(var(--color-primary-values), 0.5)
 }
 
 body::-webkit-scrollbar-thumb,
 .comment-holder::-webkit-scrollbar-thumb,
-.search-data::-webkit-scrollbar-thumb
+.search-data::-webkit-scrollbar-thumb,
+.all-user-div::-webkit-scrollbar-thumb
+.conversation-body::-webkit-scrollbar-thumb
 {
-    background-color: rgba(var(--color-primary-values), 0.5)
-    ;
+    background-color: black;
 }
 
 body,
@@ -124,4 +128,13 @@ nav.navigation {
         min-height: 70vh;
         margin: 0 auto;
     }
+}
+
+.all-user-div{
+    position: sticky;
+    top: 5rem;
+    max-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

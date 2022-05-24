@@ -16,8 +16,12 @@ export const CreatePost = () => {
     if (!authUser) {
       navigate("/login");
     }
-    if (!caption || !image) {
-      alert("Please fill all the fields");
+    if (!caption) {
+      alert("Please enter a caption");
+      return;
+    }
+    if (!image) {
+      alert("Please select an image");
       return;
     }
     const post = {

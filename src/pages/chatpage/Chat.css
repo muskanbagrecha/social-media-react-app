@@ -1,0 +1,97 @@
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    max-width: 1000px;
+    min-height: 70vh;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    overflow-y: auto;
+}
+
+.chat-tile{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.chat-tile img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+
+.conversation-screen{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 1100px;
+    min-height: 75vh;
+    height: 100%;
+}
+
+.conversation-body{
+    flex-grow: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	scroll-behavior: smooth;
+    max-height: 60vh;
+    max-width: 90vw;
+    
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.conversation-input-area{
+    display: flex;
+    justify-content: center;
+	align-items: center;
+    width: 60vw;
+    margin-bottom: 2rem;
+}
+
+/* .conversation-input-area input {
+	flex-grow: 1;
+} */
+
+.message {
+	width: 60rem;
+	word-break: break-all;
+}
+
+.conversation-tile {
+	display: flex;
+	gap: 1rem;
+	justify-content: flex-start;
+	align-items: flex-end;
+	border-radius: 1rem;
+	margin: 1rem 0;
+	padding: 1rem;
+}
+
+.conversation-tile img {
+	flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.conversation-tile.isMe {
+	justify-content: flex-start;
+	flex-direction: row-reverse;
+	text-align: right;
+}
+
+.conversation-input-area .btn{
+    min-width: unset;
+}

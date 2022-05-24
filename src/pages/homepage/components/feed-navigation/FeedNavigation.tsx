@@ -1,5 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { User, Home, Explore, SolidBookmark, Plus } from "../../../../assets/";
+import {
+  User,
+  Home,
+  Explore,
+  SolidBookmark,
+  Plus,
+  Chat,
+} from "../../../../assets/";
 import { useSelector, useDispatch } from "react-redux";
 import "./FeedNavigation.css";
 import { openModal } from "../../../../store/modal-action/modalSlice";
@@ -16,6 +23,14 @@ export const FeedNavigation: React.FC = () => {
     dispatch(openModal("CreatePostsCard"));
   };
 
+  const profileNavigation = () => {
+    if (!authUser) {
+      navigate("/login");
+      return;
+    }
+    navigate(`/profile/${authUser?.uid}`);
+  };
+
   return (
     <nav className="dark:bg-gray-800 relative rounded-md mx-2 md:order-last order-last md:order-first lg:order-first md:w-1/5 lg:w-1/5 feed-navigation">
       <div
@@ -29,7 +44,7 @@ export const FeedNavigation: React.FC = () => {
           <li>
             <Link
               to="/"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <Home className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
               <span className="nav-label flex-1 ml-3 whitespace-nowrap">
@@ -65,7 +80,11 @@ export const FeedNavigation: React.FC = () => {
               {/* above code will be fixed */}
             </Link>
           </li>
-          <li onClick={() => navigate(`/profile/${authUser?.uid}`)}>
+          <li
+            onClick={() => {
+              profileNavigation();
+            }}
+          >
             <Link
               to="/"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -73,6 +92,17 @@ export const FeedNavigation: React.FC = () => {
               <User className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
               <span className="flex-1 ml-3 whitespace-nowrap nav-label">
                 Profile
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/chat"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <Chat className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+              <span className="flex-1 ml-3 whitespace-nowrap nav-label">
+                Chat
               </span>
             </Link>
           </li>

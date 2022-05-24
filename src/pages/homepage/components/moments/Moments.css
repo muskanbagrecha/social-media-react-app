@@ -1,0 +1,29 @@
+.moments{
+    display: flex;
+    height: 7.5rem;
+    overflow-x: scroll;
+    justify-content: center;
+    padding: 6px;
+}
+
+.moments::-webkit-scrollbar{
+    display: none;
+}
+
+.moments > img{
+    border-radius: 8px;
+    margin: 2px 8px;
+}
+
+@media screen and (max-width: 640px) {
+    .moments{
+        height: 6rem;
+        padding: 5px;
+    }
+    
+    .moments > img{
+        height: 5rem;
+        width: 5rem;
+        clip-path: circle();
+    }
+}
