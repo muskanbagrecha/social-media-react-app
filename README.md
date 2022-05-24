@@ -43,5 +43,10 @@ To view the live demo, visit: [Fashgram Media](https://fashgram-media-react.netl
 - Users can see the chats they have initiated with other users on the chat page.
 
 #### Responsiveness
+<<<<<<< HEAD
 
 All pages are made responsive to mobile screens.
+=======
+All pages are made responsive to mobile screens.
+![image](https://user-images.githubusercontent.com/46674359/170024453-90811afa-40eb-4418-8c12-73c20e6aeee9.png)
+>>>>>>> ab7428351dc998de0452c1a81ea9b3016e8a0a9f
