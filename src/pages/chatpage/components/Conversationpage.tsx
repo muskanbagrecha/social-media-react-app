@@ -42,10 +42,6 @@ export function ConversationPage() {
   const scrollBar = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    console.log(
-      Object(scrollBar?.current).scrollTop,
-      Object(scrollBar?.current).scrollHeight
-    );
     const unSub = onSnapshot(
       query(
         collection(db, `chats/${chatId}/messages`),
@@ -54,10 +50,7 @@ export function ConversationPage() {
       (snapshot) => {
         setConversations(Object(snapshot.docs.map((doc) => doc.data())));
         setTimeout(() => {
-          console.log("scroll");
-
           if (scrollBar.current) {
-            console.log("scroll");
             scrollBar.current.scrollTop = scrollBar?.current?.scrollHeight;
           }
         }, 0);
@@ -142,7 +135,7 @@ export function ConversationPage() {
           );
         })}
       </div>
-      <div className="conversation-input-area w-full mx-auto pt-4 flex gap-8 border-t-2">
+      <div className="conversation-input-area mx-auto pt-4 flex gap-8 border-t-2">
         <input
           type="text"
           onChange={(e) => setTextField(e.target.value)}

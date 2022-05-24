@@ -312,13 +312,16 @@ const getCollectionsSize = async (path:string) => {
 const initiateChat = async (uid:string, otherUid:string | undefined) => {
 	const chatCollection = collection(db, `chats`);
 	const chatDocuments = await getDocs(chatCollection);
+	let chatExists = false;
 	chatDocuments.forEach((doc) => {
 		if(doc.id === `${uid}_${otherUid}` || doc.id === `${otherUid}_${uid}`) {
+			chatExists = true;
 			return;
 		}
 	})
+	if (!chatExists){
 	const chatId = `${uid}_${otherUid}`;
-	await setDoc(doc(chatCollection, chatId), {user: [uid, otherUid], chatId: chatId}, {merge: true});
+	await setDoc(doc(chatCollection, chatId), {user: [uid, otherUid], chatId: chatId}, {merge: true});}
 }
 
 

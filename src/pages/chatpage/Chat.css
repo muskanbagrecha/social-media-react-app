@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
 	align-items: center;
-    width: 80vw;
+    width: 60vw;
     margin-bottom: 2rem;
 }
 
@@ -90,4 +90,8 @@
 	justify-content: flex-start;
 	flex-direction: row-reverse;
 	text-align: right;
+}
+
+.conversation-input-area .btn{
+    min-width: unset;
 }
