@@ -3,7 +3,7 @@ import phoneImage from "../../assets/images/phone.svg";
 import { Google, CloseEye, OpenEye } from "../../assets";
 import { googleAuthHandler, loginHandler } from "../../firebase/firebaseAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, FC, useEffect } from "react";
+import { useState, FC } from "react";
 import { setError } from "../../store/auth-action/authSlice";
 import { IRootState } from "../../store/store";
 
