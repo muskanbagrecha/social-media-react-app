@@ -4,14 +4,14 @@ import { createPost } from "../../../../firebase/firebase-firestore";
 import { serverTimestamp } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setIsLoading } from "../../../../store/auth-action/authSlice";
 import "./CreatePost.css";
 import { closeModal } from "../../../../store/modal-action/modalSlice";
 
 export const CreatePost = () => {
-  const { authUser } = useSelector((store: any) => store.auth);
+  const { authUser, isLoading } = useSelector((store: any) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
   const createPostHandler = async () => {
     if (!authUser) {
       navigate("/login");
@@ -24,12 +24,12 @@ export const CreatePost = () => {
       alert("Please select an image");
       return;
     }
+    dispatch(setIsLoading(true));
     const post = {
       caption,
       image,
       createdAt: serverTimestamp(),
     };
-    setIsLoading(true);
     const postCreationResult = await createPost(authUser.uid, post);
     if (postCreationResult === "SUCCESS") {
       setIsLoading(false);
@@ -37,6 +37,7 @@ export const CreatePost = () => {
       setImage(null);
       dispatch(closeModal());
     }
+    dispatch(setIsLoading(false));
   };
 
   const [caption, setCaption] = useState("");
@@ -102,6 +103,7 @@ export const CreatePost = () => {
               <input
                 type="file"
                 id="file"
+                accept="image/*"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (!authUser) {
                     navigate("/login");

@@ -17,6 +17,7 @@ export function WhoToFollowCard({
   return (
     <div
       className="flex items-center px-1 gap-[4px] w-full rounded hover:cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+      title={displayName ?? "Muskan"}
       onClick={() => {
         navigate("/profile/" + uid);
       }}

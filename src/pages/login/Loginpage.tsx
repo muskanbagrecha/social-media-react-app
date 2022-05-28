@@ -3,7 +3,7 @@ import phoneImage from "../../assets/images/phone.svg";
 import { Google, CloseEye, OpenEye } from "../../assets";
 import { googleAuthHandler, loginHandler } from "../../firebase/firebaseAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, FC } from "react";
+import { useState, FC, useEffect } from "react";
 import { setError } from "../../store/auth-action/authSlice";
 import { IRootState } from "../../store/store";
 
@@ -28,6 +28,13 @@ export const Loginpage: FC = () => {
     loginHandler(loginInput.email, loginInput.password, dispatch);
   };
 
+  const testUserClickHandler = (e: { preventDefault: () => void }) => {
+    setLoginInput({
+      email: "testuser@gmail.com",
+      password: "testuser",
+    });
+  };
+
   return (
     <main className="min-h-full">
       <div className="container px-6 py-12 h-full">
@@ -45,6 +52,7 @@ export const Loginpage: FC = () => {
                   required
                   onChange={loginInputChangeHandler}
                   name="email"
+                  value={loginInput.email}
                 />
               </div>
 
@@ -56,6 +64,7 @@ export const Loginpage: FC = () => {
                   required
                   onChange={loginInputChangeHandler}
                   name="password"
+                  value={loginInput.password}
                 />
                 <span
                   className="-ml-8 cursor-pointer"
@@ -93,9 +102,16 @@ export const Loginpage: FC = () => {
               )}
               <button
                 type="submit"
-                className="inline-block px-7 py-3 bg-primary-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-primary-700 hover:shadow-lg focus:bg-primary-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-500 active:shadow-lg transition duration-150 ease-in-out w-full"
+                className="inline-block px-7 py-3 bg-primary-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-primary-700 hover:shadow-lg focus:bg-primary-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-500 active:shadow-lg transition duration-150 ease-in-out w-full mb-2"
               >
                 Sign in
+              </button>
+              <button
+                type="submit"
+                onClick={testUserClickHandler}
+                className="inline-block px-7 py-3 bg-primary-500 text-white font-medium text-sm mb-2 leading-snug uppercase rounded shadow-md hover:bg-primary-700 hover:shadow-lg focus:bg-primary-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-500 active:shadow-lg transition duration-150 ease-in-out w-full"
+              >
+                Test User
               </button>
               <Link
                 to="/signup"

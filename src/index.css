@@ -116,6 +116,20 @@ nav.navigation {
     margin: 0.5rem auto;
 }
 
+.backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 12;
+}
+
+input:focus{
+    outline: none;
+    border: unset;
+}
 
 @media screen and (max-width: 1028px){
     .container{
