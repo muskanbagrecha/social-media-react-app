@@ -37,6 +37,7 @@ export const googleAuthHandler = async (dispatch : Function) => {
         }
     } catch (error) {
         console.log(error);
+        
     }
     finally{
         dispatch(setIsLoading(false));
