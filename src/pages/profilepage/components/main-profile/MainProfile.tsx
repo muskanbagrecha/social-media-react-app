@@ -9,7 +9,11 @@ import {
   initiateChat,
 } from "../../../../firebase/firebase-firestore";
 import { useState, useEffect } from "react";
-import { User, setPhotoURL } from "../../../../store/auth-action/authSlice";
+import {
+  User,
+  setPhotoURL,
+  setIsLoading,
+} from "../../../../store/auth-action/authSlice";
 import { AllPosts } from "../all-posts/AllPosts";
 import { openModal } from "../../../../store/modal-action/modalSlice";
 import { PostInterface } from "../../../../store/posts-action/allPosts";
@@ -111,6 +115,7 @@ export const MainProfile = () => {
   };
 
   const changeImageHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setIsLoading(true));
     let files = e.target.files;
     const newUrl = await editUserProfileImage(
       authUser.uid,
@@ -119,6 +124,7 @@ export const MainProfile = () => {
     if (newUrl) {
       dispatch(setPhotoURL({ ...authUser, photoURL: newUrl }));
     }
+    dispatch(setIsLoading(false));
   };
 
   const chatClickHandler = async (otherUid: string | undefined) => {
@@ -157,6 +163,7 @@ export const MainProfile = () => {
                 <input
                   id="edit-profile"
                   type="file"
+                  accept="image/*"
                   onChange={changeImageHandler}
                   className="bg-primary-200 hidden"
                 />

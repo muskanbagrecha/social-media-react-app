@@ -8,6 +8,7 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
 } from 'firebase/auth';
+import { setIsLoading } from "../store/auth-action/authSlice";
 import { getDoc, doc } from "firebase/firestore";
 import {setAuthUser} from "../store/auth-action/authSlice";
 import { addUserToTheDB, getAllDocumentsFromCollection } from "./firebase-firestore";
@@ -18,6 +19,7 @@ const provider = new GoogleAuthProvider();
 
 export const googleAuthHandler = async (dispatch : Function) => {
     try {
+        dispatch(setIsLoading(true));
         await signInWithPopup(auth, provider);
         const docSnap = await getDoc(doc(db, `users`, auth?.currentUser?.uid ?? ""));
         if (docSnap.exists()) {
@@ -35,11 +37,16 @@ export const googleAuthHandler = async (dispatch : Function) => {
         }
     } catch (error) {
         console.log(error);
+        
+    }
+    finally{
+        dispatch(setIsLoading(false));
     }
 };
 
 export const loginHandler = async(email : string, password : string, dispatch: Function) => {
     try {
+        dispatch(setIsLoading(true));
 		await signInWithEmailAndPassword(auth, email, password);
         const followersList = await getAllDocumentsFromCollection(`users/${auth?.currentUser?.uid}/followers`);
 		const followingList = await getAllDocumentsFromCollection(`users/${auth?.currentUser?.uid}/following`);
@@ -49,10 +56,14 @@ export const loginHandler = async(email : string, password : string, dispatch: F
 	} catch (error : any) {
 		console.log(error.message);
 	}
+    finally{
+        dispatch(setIsLoading(false));
+    }
 }
 
 export const signupHandler = async(name: string, email : string, password : string, dispatch: Function) => {
     try {
+        dispatch(setIsLoading(true));
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(userCredential.user, {
 			displayName: name,
@@ -67,6 +78,9 @@ export const signupHandler = async(name: string, email : string, password : stri
             backgroundImageURL: '',});
     } catch (error) {
         console.log(error);
+    }
+    finally{
+        dispatch(setIsLoading(false));
     }
 }
 
